@@ -1,13 +1,18 @@
 // components/BlurredContentWithSignInPrompt.tsx
 "use client";
 
-import Link from "next/link";
 import React from "react";
 import ShortCard from "@/components/shorts/short-card";
 import { SignInButton } from "@clerk/nextjs";
+import { Shorts } from "@prisma/client";
+import { ShortWithUser } from "@/lib/types/types";
+
+// type Props = {
+//   shorts: Array<any >;
+// };
 
 type Props = {
-  shorts: Array<any>;
+  shorts: ShortWithUser[];
 };
 
 export default function BlurredContent({ shorts }: Props) {

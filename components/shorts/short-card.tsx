@@ -1,26 +1,36 @@
 'use client'
-import { Prisma } from '@prisma/client'
 import React from 'react'
 import { Card, CardFooter } from '../ui/card'
 import { Video } from '@imagekit/next'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
+import { ShortWithUser } from '@/lib/types/types'
 
 
 const urlEndpoint = process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT as string;
 
+// type ShortCardProps = {
+//     short: Prisma.ShortsGetPayload<{
+//         include: {
+//             user: {
+//                 select: {
+//                     name: true,
+//                     email: true,
+//                     imageUrl: true
+//                 }
+//             }
+//         }
+//     }>
+// }
+
+
+
 type ShortCardProps = {
-    short: Prisma.ShortsGetPayload<{
-        include: {
-            user: {
-                select: {
-                    name: true,
-                    email: true,
-                    imageUrl: true
-                }
-            }
-        }
-    }>
-}
+  short: ShortWithUser;
+};
+
+
+
+
 
 const ShortCard: React.FC<ShortCardProps> = ({ short }) => {
     console.log(`short is -> ${urlEndpoint}/YtShorts/${short.url}`);
